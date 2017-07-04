@@ -7,7 +7,7 @@
     "testie": "bin/attis.js"
   },
   "scripts": {
-    "test": "nyc --reporter=lcov node bin/attis"
+    "test": "nyc --reporter=lcov node bin/attis && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/jtwebman/attis#readme",
   "devDependencies": {
     "chai": "^4.0.2",
+    "coveralls": "^2.13.1",
     "eslint": "^4.1.1",
     "eslint-config-google": "^0.8.0",
     "nyc": "^11.0.3"

@@ -6,13 +6,13 @@ const callOnce = require('./call-once');
 const outputSingleLog = require('./output-single-log');
 const searchDirector = require('./search-directory');
 
-function callDone(test, options, error, done) {
+function callDone(test, options, status, error, done) {
   if (options.verbose) {
-    outputSingleLog(test, error);
+    outputSingleLog(test, status, error);
   }
   done(null, {
     messageTree: test.messageTree,
-    passed: !error,
+    status,
     error
   });
 }
@@ -20,16 +20,21 @@ function callDone(test, options, error, done) {
 function runTest(test, options, done) {
   const finished = callOnce(callDone);
   try {
-    setTimeout(() => { // Check for a timeout
-      const timeoutError = new Error(`timeout at ${options.timeout || 2000}ms`);
-      finished(test, options, timeoutError, done);
-    }, options.timeout || 2000);
+    if (test.action === 'skip') {
+      finished(test, options, 'skipped', null, done);
+    } else {
+      const timeout = setTimeout(() => { // Check for a timeout
+        const timeoutError = new Error(`timeout at ${options.timeout || 2000}ms`);
+        finished(test, options, 'failed', timeoutError, done);
+      }, options.timeout || 2000);
 
-    test.run((error) => {
-      finished(test, options, error, done);
-    });
+      test.run((error) => {
+        clearTimeout(timeout);
+        finished(test, options, error ? 'failed' : 'passed', error, done);
+      });
+    }
   } catch (error) {
-    finished(test, options, error, done);
+    finished(test, options, 'failed', error, done);
   }
 }
 

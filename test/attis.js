@@ -2,7 +2,7 @@
 
 const {assert} = require('chai');
 
-const {describe, it} = require('../src/attis');
+const {describe, it, skip} = require('../src/attis');
 
 const testie = require('../src/attis');
 
@@ -12,7 +12,7 @@ module.exports = describe('testie', [
     assert.property(testie, 'describe');
   }),
 
-  it('returns an object with assert', () => {
+  skip('returns an object with assert', () => {
     assert.property(testie, 'assert');
   }),
 
@@ -29,7 +29,7 @@ module.exports = describe('testie', [
   }),
 
   describe('test nesting', [
-    it('test a test that should timeout', (done) => {
+    it.skip('test a test that should timeout', (done) => {
       setTimeout(() => {
         done();
       }, 10000);

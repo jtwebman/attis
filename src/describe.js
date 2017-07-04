@@ -12,10 +12,10 @@ function describe(message, tests) {
   return tests.reduce((testFixtures, test) => {
     if (Array.isArray(test)) {
       test.forEach((innerTest) => {
-        testFixtures.push(testFixture({message, next: innerTest.messageTree}, innerTest.run));
+        testFixtures.push(testFixture({message, next: innerTest.messageTree}, innerTest.action, innerTest.run));
       });
     } else {
-      testFixtures.push(testFixture({message, next: test.messageTree}, test.run));
+      testFixtures.push(testFixture({message, next: test.messageTree}, test.action, test.run));
     }
     return testFixtures;
   }, []);

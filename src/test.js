@@ -2,6 +2,7 @@
 
 const testFixture = require('./test-fixture');
 const callOnce = require('./call-once');
+const skip = require('./skip');
 
 /**
  * This is a single test with no setup and finish.
@@ -11,7 +12,7 @@ const callOnce = require('./call-once');
  */
 function test(message, fn) {
   if (fn.length >= 1) { // callback
-    return testFixture({message}, (done) => {
+    return testFixture({message}, 'run', (done) => {
       const finished = callOnce(done);
       const result = fn((testDone) => {
         finished(testDone);
@@ -21,7 +22,7 @@ function test(message, fn) {
       }
     });
   } else {
-    return testFixture({message}, (done) => {
+    return testFixture({message}, 'run', (done) => {
       try {
         const result = fn();
         if (result && typeof result.then === 'function') { // promise
@@ -35,5 +36,7 @@ function test(message, fn) {
     });
   }
 }
+
+test.skip = skip;
 
 module.exports = test;

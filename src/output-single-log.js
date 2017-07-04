@@ -2,10 +2,12 @@
 
 const RED = '\x1b[31m';
 const GREEN = '\x1b[32m';
+const CYAN = '\x1b[36m';
 const RESET = '\x1b[0m';
 
 const CHECKMARK = '\u2714';
 const XMARK = '\u2718';
+const OMARK = '\u25CF';
 const ARROW = '\u2192';
 
 function getMessage(messageTree) {
@@ -15,11 +17,17 @@ function getMessage(messageTree) {
   return messageTree.message;
 }
 
-function outputSingleLog(test, error) {
-  if (error) {
-    console.log(`${RED}${XMARK} ${getMessage(test.messageTree)} - ${error.message}${RESET}`);
-  } else {
-    console.log(`${GREEN}${CHECKMARK} ${getMessage(test.messageTree)}${RESET}`);
+function outputSingleLog(test, status, error) {
+  switch (status) {
+    case 'failed':
+      console.log(`${RED}${XMARK} ${getMessage(test.messageTree)} - ${error.message}${RESET}`);
+      break;
+    case 'skipped':
+      console.log(`${CYAN}${OMARK} ${getMessage(test.messageTree)} - skipped${RESET}`);
+      break;
+    case 'passed':
+      console.log(`${GREEN}${CHECKMARK} ${getMessage(test.messageTree)}${RESET}`);
+      break;
   }
 }
 
