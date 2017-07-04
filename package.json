@@ -1,11 +1,12 @@
 {
   "name": "attis",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Small parallel functional testing framework",
   "main": "index.js",
   "bin": {
     "testie": "bin/attis.js"
   },
+  "engines" : { "node" : ">= 4" },
   "scripts": {
     "test": "nyc --reporter=lcov node bin/attis && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
