@@ -1,0 +1,38 @@
+{
+  "name": "testie",
+  "version": "0.1.0",
+  "description": "Small parallel functional testing framework",
+  "main": "index.js",
+  "bin": {
+    "testie": "bin/testie.js"
+  },
+  "scripts": {
+    "test": "nyc --reporter=lcov node bin/testie"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jtwebman/jsapi.git"
+  },
+  "keywords": [
+    "test",
+    "testing",
+    "mocha",
+    "jest",
+    "framework"
+  ],
+  "author": "JT Turner <jtwebman@gmail.com> (https://jtwebman.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jtwebman/jsapi/issues"
+  },
+  "homepage": "https://github.com/jtwebman/jsapi#readme",
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "eslint": "^4.1.1",
+    "eslint-config-google": "^0.8.0",
+    "nyc": "^11.0.3"
+  },
+  "dependencies": {
+    "async": "^2.5.0"
+  }
+}
