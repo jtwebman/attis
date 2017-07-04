@@ -1,19 +1,20 @@
 'use strict';
 
-const {assert} = require('chai');
+const assert = require('chai').assert;
 
-const {describe, it, skip} = require('../src/attis');
-
-const testie = require('../src/attis');
+const attis = require('../src/attis');
+const describe = attis.describe;
+const it = attis.it;
+const skip = attis.skip;
 
 module.exports = describe('testie', [
 
   it('returns an object with describe', () => {
-    assert.property(testie, 'describe');
+    assert.property(attis, 'describe');
   }),
 
   skip('returns an object with assert', () => {
-    assert.property(testie, 'assert');
+    assert.property(attis, 'assert');
   }),
 
   it('test a test with a promise', () => {
