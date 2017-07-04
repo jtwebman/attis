@@ -30,7 +30,7 @@ function runTest(test, options, done) {
 
       test.run((error) => {
         clearTimeout(timeout);
-        finished(test, options, error ? 'failed' : 'passed', error, done);
+        finished(test, options, (error ? 'failed' : 'passed'), error, done);
       });
     }
   } catch (error) {

@@ -7,12 +7,16 @@
  */
 function callOnce(fn) {
   let called = false;
-  return (...args) => {
+
+  function caller() {
+    const args = [].slice.call(arguments);
     if (!called) {
       called = true;
-      fn(...args);
+      fn.apply(null, args);
     }
-  };
+  }
+
+  return caller;
 }
 
 module.exports = callOnce;
