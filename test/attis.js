@@ -2,9 +2,9 @@
 
 const {assert} = require('chai');
 
-const {describe, it} = require('../src/testie');
+const {describe, it} = require('../src/attis');
 
-const testie = require('../src/testie');
+const testie = require('../src/attis');
 
 module.exports = describe('testie', [
 

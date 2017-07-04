@@ -3,10 +3,10 @@
 const describe = require('./describe');
 const test = require('./test');
 
-const testie = {
+const attis = {
   describe,
   it: test,
   test
 };
 
-module.exports = testie;
+module.exports = attis;

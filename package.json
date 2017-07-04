@@ -1,17 +1,17 @@
 {
-  "name": "testie",
+  "name": "attis",
   "version": "0.1.0",
   "description": "Small parallel functional testing framework",
   "main": "index.js",
   "bin": {
-    "testie": "bin/testie.js"
+    "testie": "bin/attis.js"
   },
   "scripts": {
-    "test": "nyc --reporter=lcov node bin/testie"
+    "test": "nyc --reporter=lcov node bin/attis"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jtwebman/jsapi.git"
+    "url": "git+https://github.com/jtwebman/attis.git"
   },
   "keywords": [
     "test",
@@ -23,9 +23,9 @@
   "author": "JT Turner <jtwebman@gmail.com> (https://jtwebman.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jtwebman/jsapi/issues"
+    "url": "https://github.com/jtwebman/attis/issues"
   },
-  "homepage": "https://github.com/jtwebman/jsapi#readme",
+  "homepage": "https://github.com/jtwebman/attis#readme",
   "devDependencies": {
     "chai": "^4.0.2",
     "eslint": "^4.1.1",
