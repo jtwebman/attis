@@ -17,16 +17,16 @@ function getMessage(messageTree) {
   return messageTree.message;
 }
 
-function outputSingleLog(test, status, error) {
+function outputSingleLog(output, test, status, error) {
   switch (status) {
     case 'failed':
-      console.log(`${RED}${XMARK} ${getMessage(test.messageTree)} - ${error.message}${RESET}`);
+      output.log(`${RED}${XMARK} ${getMessage(test.messageTree)} - ${error.message}${RESET}`);
       break;
     case 'skipped':
-      console.log(`${CYAN}${OMARK} ${getMessage(test.messageTree)} - skipped${RESET}`);
+      output.log(`${CYAN}${OMARK} ${getMessage(test.messageTree)} - skipped${RESET}`);
       break;
     case 'passed':
-      console.log(`${GREEN}${CHECKMARK} ${getMessage(test.messageTree)}${RESET}`);
+      output.log(`${GREEN}${CHECKMARK} ${getMessage(test.messageTree)}${RESET}`);
       break;
   }
 }

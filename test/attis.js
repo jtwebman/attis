@@ -5,16 +5,23 @@ const assert = require('chai').assert;
 const attis = require('../src/attis');
 const describe = attis.describe;
 const it = attis.it;
-const skip = attis.skip;
 
-module.exports = describe('testie', [
+module.exports = describe('attis', [
 
-  it('returns an object with describe', () => {
+  it('returns an object with describe function', () => {
     assert.property(attis, 'describe');
   }),
 
-  skip('returns an object with assert', () => {
-    assert.property(attis, 'assert');
+  it('returns an object with it function', () => {
+    assert.property(attis, 'it');
+  }),
+
+  it('returns an object with test function', () => {
+    assert.property(attis, 'test');
+  }),
+
+  it('returns an object with skip function', () => {
+    assert.property(attis, 'skip');
   }),
 
   it('test a test with a promise', () => {

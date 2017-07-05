@@ -8,7 +8,7 @@ const searchDirector = require('./search-directory');
 
 function callDone(test, options, status, error, done) {
   if (options.verbose) {
-    outputSingleLog(test, status, error);
+    outputSingleLog(options.output, test, status, error);
   }
   done(null, {
     messageTree: test.messageTree,

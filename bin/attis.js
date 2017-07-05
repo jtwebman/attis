@@ -9,7 +9,8 @@ const testFolder = path.join(process.cwd(), 'test');
 const args = process.argv.slice(2);
 
 runner(testFolder, {
-  verbose: args.indexOf('-s') < 0
+  verbose: args.indexOf('-s') < 0,
+  output: console
 }, (err, results) => {
   if (err) {
     console.error(err);
