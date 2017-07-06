@@ -1,10 +1,5 @@
 'use strict';
 
-const RED = '\x1b[31m';
-const GREEN = '\x1b[32m';
-const CYAN = '\x1b[36m';
-const RESET = '\x1b[0m';
-
 const CHECKMARK = '\u2714';
 const XMARK = '\u2718';
 const OMARK = '\u25CF';
@@ -20,13 +15,13 @@ function getMessage(messageTree) {
 function outputSingleLog(output, test, status, error) {
   switch (status) {
     case 'failed':
-      output.log(`${RED}${XMARK} ${getMessage(test.messageTree)} - ${error.message}${RESET}`);
+      output.error(`${XMARK} ${getMessage(test.messageTree)} - ${error.message}`);
       break;
     case 'skipped':
-      output.log(`${CYAN}${OMARK} ${getMessage(test.messageTree)} - skipped${RESET}`);
+      output.warn(`${OMARK} ${getMessage(test.messageTree)} - skipped`);
       break;
     case 'passed':
-      output.log(`${GREEN}${CHECKMARK} ${getMessage(test.messageTree)}${RESET}`);
+      output.info(`${CHECKMARK} ${getMessage(test.messageTree)}`);
       break;
   }
 }

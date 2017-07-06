@@ -5,8 +5,8 @@ const GREEN = '\x1b[32m';
 const CYAN = '\x1b[36m';
 const RESET = '\x1b[0m';
 
-function getWriteFunction(stream, color) {
-  if (color) {
+function getWriteFunction(stream, options, color) {
+  if (options.color && color) {
     return (message) => stream.write(`${color}${message}${RESET}\n`);
   } else {
     return (message) => stream.write(`${message}\n`);
@@ -15,11 +15,9 @@ function getWriteFunction(stream, color) {
 
 function logger(stream, options) {
   return {
-    error: getWriteFunction(stream, RED),
-    warn: getWriteFunction(stream, CYAN),
-    info: getWriteFunction(stream, GREEN),
-    verbose: getWriteFunction(stream, GREEN),
-    debug: getWriteFunction(stream)
+    error: getWriteFunction(stream, options, RED),
+    warn: getWriteFunction(stream, options, CYAN),
+    info: getWriteFunction(stream, options, GREEN)
   };
 }
 

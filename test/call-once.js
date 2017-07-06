@@ -8,18 +8,18 @@ const it = attis.it;
 
 const callOnce = require('../src/call-once');
 
-module.exports = describe('call once function', [
+module.exports = describe('call once', [
 
   it('returns a function that only can be called once', () => {
     let called = 0;
     function testCallOnce() {
       return ++called;
     }
-    const done = callOnce(testCallOnce);
+    const callOnceTest = callOnce(testCallOnce);
     assert.equal(0, called);
-    done();
+    callOnceTest(); // first call
     assert.equal(1, called);
-    done();
+    callOnceTest(); // second call
     assert.equal(1, called);
   })
 
