@@ -10,7 +10,9 @@
     "node": ">= 4"
   },
   "scripts": {
-    "test": "nyc --reporter=lcov node bin/attis && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test": "nyc --reporter=lcov node bin/attis && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -38,6 +40,8 @@
     "sinon": "^2.3.6"
   },
   "dependencies": {
-    "async": "^2.5.0"
-  }
+    "async": "^2.5.0",
+    "snyk": "^1.192.4"
+  },
+  "snyk": true
 }
